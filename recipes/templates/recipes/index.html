@@ -1,0 +1,15 @@
+{% extends "recipes/base.html" %}
+
+{% block title %}Главная{% endblock %}
+
+{% block content %}
+<h2>Последние рецепты</h2>
+<ul>
+    {% for recipe in recipes %}
+        <li>
+            <h3><a href="{% url 'recipe_detail' recipe.id %}">{{ recipe.title }}</a></h3>
+            <p>{{ recipe.description|truncatewords:30 }}</p>
+        </li>
+    {% endfor %}
+</ul>
+{% endblock %}

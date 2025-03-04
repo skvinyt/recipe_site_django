@@ -3,6 +3,7 @@ from .forms import RecipeForm, RegisterForm
 from .models import Recipe
 from django.shortcuts import render, get_object_or_404, redirect
 from django.contrib.auth.decorators import login_required
+from django.contrib.auth.forms import AuthenticationForm
 
 def register(request):
     if request.method == 'POST':
@@ -58,6 +59,7 @@ def login_view(request):
         form = AuthenticationForm()
     return render(request, 'registration/login.html', {'form': form})
 
+
 def logout_view(request):
     logout(request)
     return redirect('index')
@@ -87,3 +89,7 @@ def edit_recipe(request, recipe_id):
     else:
         form = RecipeForm(instance=recipe)
     return render(request, 'recipes/recipe_form.html', {'form': form})
+
+@login_required
+def profile(request):
+    return render(request, 'registration/profile.html')

@@ -7,7 +7,7 @@ class RecipeForm(forms.ModelForm):
         model = Recipe
         fields = ['title', 'description', 'steps', 'preparation_time', 'image', 'ingredients', 'categories']
         widgets = {
-            'ingredients': forms.Textarea(),  # Используйте Textarea для текстового поля
+            'ingredients': forms.Textarea(attrs={'rows': 3}),  # Убедитесь, что поле отображается как текстовая область
         }
         
 class RegisterForm(forms.ModelForm):

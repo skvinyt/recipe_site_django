@@ -1,15 +1,21 @@
 {% extends "recipes/base.html" %}
+{% load static %}  <!-- Загрузите тег static -->
 
 {% block title %}Главная{% endblock %}
 
 {% block content %}
 <h2>Последние рецепты</h2>
-<ul>
+<div class="recipe-grid">
     {% for recipe in recipes %}
-        <li>
-            <h3><a href="{% url 'recipe_detail' recipe.id %}">{{ recipe.title }}</a></h3>
-            <p>{{ recipe.description|truncatewords:30 }}</p>
-        </li>
+        <div class="recipe-card">
+            {% if recipe.image %}
+                <img src="{{ recipe.image.url }}" alt="{{ recipe.title }}">
+            {% else %}
+                <img src="{% static 'images/placeholder.jpg' %}" alt="Placeholder Image">
+            {% endif %}
+            <h3>{{ recipe.title }}</h3>
+            <a href="{% url 'recipe_detail' recipe.id %}" class="btn">Перейти</a>
+        </div>
     {% endfor %}
-</ul>
+</div>
 {% endblock %}

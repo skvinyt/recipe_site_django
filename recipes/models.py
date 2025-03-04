@@ -15,7 +15,7 @@ class Recipe(models.Model):
     image = models.ImageField(upload_to='recipes/')
     author = models.ForeignKey(User, on_delete=models.CASCADE)
     ingredients = models.TextField(null=True, blank=True)  # Поле для ингредиентов
-    categories = models.ManyToManyField(Category, through='RecipeCategory')
+    categories = models.ManyToManyField('Category', through='RecipeCategory')
 
     def __str__(self):
         return self.title

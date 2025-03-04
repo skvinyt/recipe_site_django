@@ -8,6 +8,8 @@
     <p><strong>Автор:</strong> {{ recipe.author.username }}</p>
     <p><strong>Время приготовления:</strong> {{ recipe.preparation_time }} минут</p>
     <p>{{ recipe.description }}</p>
+    <h3>Ингредиенты:</h3>
+    <p>{{ recipe.ingredients|linebreaks }}</p>  <!-- Отображаем ингредиенты с сохранением разрывов строк -->
     <h3>Шаги приготовления:</h3>
     <p>{{ recipe.steps }}</p>
     {% if recipe.image %}
@@ -20,8 +22,5 @@
             {% endfor %}
         </ul>
     </p>
-    {% if user.is_authenticated and user == recipe.author %}
-        <a href="{% url 'edit_recipe' recipe.id %}">Редактировать рецепт</a>
-    {% endif %}
 </article>
 {% endblock %}

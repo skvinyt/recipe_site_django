@@ -1,14 +1,10 @@
 {% extends "recipes/base.html" %}
 {% load static %}
 
-{% block title %}Профиль{% endblock %}
+{% block title %}Рецепты пользователя {{ user.username }}{% endblock %}
 
 {% block content %}
-<h2>Профиль пользователя</h2>
-<p>Добро пожаловать, {{ user.username }}!</p>
-<p>Ваш email: {{ user.email }}</p>
-
-<h3>Ваши рецепты:</h3>
+<h2>Рецепты пользователя {{ user.username }}</h2>
 <div class="recipe-grid">
     {% for recipe in user_recipes %}
         <div class="recipe-card">
@@ -22,10 +18,4 @@
         </div>
     {% endfor %}
 </div>
-
-<form method="post" action="{% url 'logout' %}" class="logout-form">
-    {% csrf_token %}
-    <button type="submit" class="logout-btn">Выйти</button>
-</form>
 {% endblock %}
-

@@ -5,11 +5,11 @@
 {% block content %}
 <article>
     <h2>{{ recipe.title }}</h2>
-    <p><strong>Автор:</strong> {{ recipe.author.username }}</p>
+    <p><strong>Автор:</strong> <a href="{% url 'user_recipes' recipe.author.username %}">{{ recipe.author.username }}</a></p>
     <p><strong>Время приготовления:</strong> {{ recipe.preparation_time }} минут</p>
     <p>{{ recipe.description }}</p>
     <h3>Ингредиенты:</h3>
-    <p>{{ recipe.ingredients|linebreaks }}</p>  <!-- Отображаем ингредиенты с сохранением разрывов строк -->
+    <p>{{ recipe.ingredients|linebreaks }}</p>
     <h3>Шаги приготовления:</h3>
     <p>{{ recipe.steps }}</p>
     {% if recipe.image %}
@@ -22,5 +22,8 @@
             {% endfor %}
         </ul>
     </p>
+    {% if user.is_authenticated and user == recipe.author %}
+        <a href="{% url 'edit_recipe' recipe.id %}" class="btn">Редактировать рецепт</a>
+    {% endif %}
 </article>
 {% endblock %}

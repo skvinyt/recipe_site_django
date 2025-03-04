@@ -53,11 +53,13 @@ article img {
 }
 
 form {
-    background: #fff;
+    max-width: 600px; /* Фиксированная ширина для формы */
+    margin: 0 auto; /* Центрирование по горизонтали */
     padding: 20px;
+    background-color: #fff; /* Белый фон */
+    border: 1px solid #ccc;
     border-radius: 5px;
-    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
-    max-width: 650px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
 }
 
 form label {
@@ -72,12 +74,15 @@ form input, form textarea, form select {
     margin-bottom: 10px;
     border: 1px solid #ccc;
     border-radius: 5px;
+    box-sizing: border-box;
 }
 
 form button {
-    background-color: #333;
+    width: 100%;
+    padding: 10px;
+    font-size: 16px;
     color: #fff;
-    padding: 10px 20px;
+    background-color: #555;
     border: none;
     border-radius: 5px;
     cursor: pointer;
@@ -94,11 +99,15 @@ form button:hover {
 }
 
 .recipe-card {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
     border: 1px solid #ddd;
     border-radius: 5px;
     overflow: hidden;
     width: 200px;
     box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    height: 100%; /* Убедитесь, что высота установлена */
 }
 
 .recipe-card img {
@@ -111,35 +120,48 @@ form button:hover {
     padding: 10px;
     font-size: 1.2em;
     margin: 0;
+    flex-grow: 1; /* Позволяет заголовку занимать доступное пространство */
 }
 
 .recipe-card .btn {
     display: inline-block;
+    width: 100%;
     padding: 10px;
     text-align: center;
-    background-color: #007bff;
+    background-color: #555;
     color: white;
     text-decoration: none;
     border-radius: 5px;
-    width: 100%;
-    box-sizing: border-box;
+    margin-top: auto; /* Перемещает кнопку вниз */
 }
 
 .recipe-card .btn:hover {
-    background-color: #0056b3;
+    background-color: #555;
 }
 
-.logout-link {
+
+.logout-form {
+    position: absolute;
+    top: 20px; /* Отступ сверху */
+    right: 20px; /* Отступ справа */
+    margin: 0;
+    padding: 0;
+}
+
+.logout-btn {
     display: inline-block;
     padding: 10px 15px;
     font-size: 16px;
     color: #fff;
-    background-color: #333;
+    background-color: #dc3545; /* Красный цвет для кнопки выхода */
     text-decoration: none;
+    border: none;
     border-radius: 5px;
+    cursor: pointer;
     transition: background-color 0.3s;
 }
 
-.logout-link:hover {
-    background-color: #333;
+.logout-btn:hover {
+    background-color: #c82333; /* Темнее красный цвет при наведении */
 }
+

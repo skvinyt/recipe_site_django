@@ -3,6 +3,7 @@ from .forms import RecipeForm, RegisterForm
 from .models import Recipe
 from django.shortcuts import render, get_object_or_404, redirect
 from django.contrib.auth.decorators import login_required
+from django.contrib.auth.models import User
 from django.contrib.auth.forms import AuthenticationForm
 
 def register(request):
@@ -92,4 +93,10 @@ def edit_recipe(request, recipe_id):
 
 @login_required
 def profile(request):
-    return render(request, 'registration/profile.html')
+    user_recipes = Recipe.objects.filter(author=request.user)
+    return render(request, 'registration/profile.html', {'user_recipes': user_recipes})
+
+def user_recipes(request, username):
+    user = get_object_or_404(User, username=username)
+    recipes = Recipe.objects.filter(author=user)
+    return render(request, 'recipes/user_recipes.html', {'user': user, 'user_recipes': recipes})

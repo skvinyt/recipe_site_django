@@ -1,12 +1,16 @@
 {% extends "recipes/base.html" %}
+{% load static %}
 
 {% block title %}Регистрация{% endblock %}
 
 {% block content %}
-<h2>Регистрация</h2>
-<form method="post">
-    {% csrf_token %}
-    {{ form.as_p }}
-    <button type="submit">Зарегистрироваться</button>
-</form>
+<div class="auth-form">
+    <h2>Регистрация</h2>
+    <form method="post">
+        {% csrf_token %}
+        {{ form.as_p }}
+        <input type="password" name="password" autocomplete="new-password" required id="id_password">
+        <button type="submit">Зарегистрироваться</button>
+    </form>    
+</div>
 {% endblock %}

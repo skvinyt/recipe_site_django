@@ -89,7 +89,7 @@ form button {
 }
 
 form button:hover {
-    background-color: #555;
+    background-color: #858585;
 }
 
 .recipe-grid {
@@ -136,7 +136,7 @@ form button:hover {
 }
 
 .recipe-card .btn:hover {
-    background-color: #555;
+    background-color: #858585;
 }
 
 
@@ -165,3 +165,42 @@ form button:hover {
     background-color: #c82333; /* Темнее красный цвет при наведении */
 }
 
+.auth-form {
+    max-width: 400px; /* Фиксированная ширина для формы */
+    margin: 20px auto; /* Центрирование по горизонтали */
+    padding: 20px;
+    background-color: #fff; /* Белый фон */
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.auth-form label {
+    display: block;
+    margin-bottom: 5px;
+    font-weight: bold;
+}
+
+.auth-form input {
+    width: 100%;
+    padding: 10px;
+    margin-bottom: 10px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    box-sizing: border-box;
+}
+
+.auth-form button {
+    width: 100%;
+    padding: 10px;
+    font-size: 16px;
+    color: #fff;
+    background-color: #555;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+.auth-form button:hover {
+    background-color: #858585;
+}
